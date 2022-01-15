@@ -6,7 +6,7 @@ const testPostData = { title: 'Before all, create posts', description: 'post con
 
 
 const connect = async () => {
-    mongoose.connect(process.env.DATABASE_URI)
+    mongoose.connect('mongodb+srv://elie:testuser@cluster0.bfhjd.mongodb.net/expressAPI?retryWrites=true&w=majority')
     // mongoose.connect(process.env.DB_CONNECTION)
     .then(() => console.log("DB connected!"))
     .catch(err => console.log(err));
