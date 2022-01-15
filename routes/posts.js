@@ -7,7 +7,7 @@ const Post = require('../models/Post')
 router.get('/', async (req, res) => {
     try {
         const posts = await Post.find();
-        res.json(posts);
+        res.status(200).json(posts);
 
     } catch (error) {
         res.json({ message: error });
@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 
         })
         const userPost = await savedpost.save();
-        res.status(200).json(userPost);
+        res.status(201).json(userPost);
 
     } catch (error) {
         res.status(500).json(error);
@@ -52,7 +52,7 @@ router.patch('/:postID', async (req, res) => {
                 }
             }
         )
-        res.json(updatedPost)
+        res.status(200).json(updatedPost)
     } catch (error) {
         res.status(500).json({ message: error })
     }
@@ -63,7 +63,7 @@ router.patch('/:postID', async (req, res) => {
 router.delete('/:postID', async (req, res) => {
     try {
         const removedPost = await Post.remove({ _id: req.params.postID })
-        res.json(removedPost)
+        res.status(204).json(removedPost)
     } catch (error) {
         res.status(500).json({ message: error })
     }
