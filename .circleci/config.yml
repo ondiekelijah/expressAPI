@@ -21,7 +21,9 @@ jobs:
       - run:
           name: test
           command: npm test
-          environment:
-            DB_URI: ${{ secrets.DB_URI }}
+    parallelism: 4
+
+
+
 
 
