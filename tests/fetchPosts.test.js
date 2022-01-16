@@ -7,6 +7,7 @@ const PostModel = require('../models/Post');
 describe('Post fetch test suite', () => {
 
     beforeAll(async () => await db.connect());
+    afterEach(async () => await db.clear());
     afterAll(async () => await db.close());
 
 

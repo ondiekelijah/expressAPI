@@ -21,6 +21,7 @@ jobs:
       - run:
           name: test
           command: npm test
-          no_output_timeout: 8m
+          no_output_timeout: 1200
+
 
     parallelism: 4
