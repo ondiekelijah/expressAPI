@@ -44,7 +44,7 @@ jobs:
           paths:
             - ./node_modules
       - run: npm test
-          no_output_timeout: 20s
+      - no_output_timeout: 20s
 
 
     parallelism: 4
