@@ -18,7 +18,7 @@ describe('Post fetch test suite', () => {
 
     test('GET /posts/validID', async () => {
         // Searches the post in the database... 
-        const post = await PostModel.findOne({})
+        const post = await PostModel.findOne({});
         const response = await request(app).get(`/posts/${post._id}`);
         expect(response.statusCode).toBe(200);
 

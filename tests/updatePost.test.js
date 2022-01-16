@@ -15,12 +15,12 @@ describe('Post Update test suite', () => {
 
     it('PATCH /posts/validID', async () => {
         // Searches the post in the database... 
-        const post = await PostModel.findOne({})
+        const post = await PostModel.findOne({});
         const res = await request(app).patch(`/posts/${post._id}`)
             .send({
                 title: 'updated title',
                 description: 'updated content'
-            })
+            });
 
         expect(res.statusCode).toBe(200);
 
@@ -34,7 +34,7 @@ describe('Post Update test suite', () => {
             .send({
                 title: 'updated title',
                 description: 'updated content'
-            })
+            });
 
         expect(res.statusCode).toBe(500);
 
