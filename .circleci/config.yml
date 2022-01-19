@@ -8,12 +8,12 @@ jobs:
       - checkout
       - run:
           name: update npm
-          command: "npm install -g npm@5"
+          command: "sudo npm install -g npm@5"
       # - restore_cache:
       #     key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: install dependencies
-          command: npm install
+          command: sudo npm install
       # - save_cache:
       #     key: dependency-cache-{{ checksum "package-lock.json" }}
       #     paths:
