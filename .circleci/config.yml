@@ -1,49 +1,25 @@
-# version: 2.1
-# jobs:
-#   build:
-#     working_directory: ~/public
-#     docker:
-#       - image: circleci/node:16.13.1
-#     steps:
-#       - checkout
-#       - run:
-#           name: update-npm
-#           command: "sudo npm install -g npm@latest"
-#     #   - restore_cache:
-#     #       key: dependency-cache-{{ checksum "package.json" }}
-#       - run:
-#           name: install-npm-wee
-#           command: npm install
-#     #   - save_cache:
-#     #       key: dependency-cache-{{ checksum "package.json" }}
-#     #       paths:
-#     #         - ./node_modules
-#       - run:
-#           name: test
-#           command: npm test
-#           no_output_timeout: 1200
-
-
-#     parallelism: 4
-
-version: 2
+version: 2.1
 jobs:
   build:
+    working_directory: ~/repo
     docker:
-      # specify the version you desire here
-      - image: circleci/node:16.13.1
-
+      - image: cimg/node:10.16.3
     steps:
       - checkout
-      - run: sudo npm install -g npm@latest
+      - run:
+          name: update npm
+          command: "npm install -g npm@5"
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run: npm install
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install dependencies
+          command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
-      - run: npm test
-
-
-    parallelism: 4
+      - run:
+          name: run test
+          command: npm test
+      - store_artifacts:
+          path: ~/repo/space
